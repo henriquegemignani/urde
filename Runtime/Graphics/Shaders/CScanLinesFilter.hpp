@@ -12,6 +12,9 @@ enum class EFilterShape;
 enum class EFilterType;
 
 class CScanLinesFilter {
+  static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
   struct Uniform {
     zeus::CColor color;
   };
@@ -19,6 +22,8 @@ class CScanLinesFilter {
   boo::ObjToken<boo::IShaderDataBinding> m_dataBind;
   Uniform m_uniform;
   bool m_even;
+
+  static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type);
 
 public:
   static void Initialize();

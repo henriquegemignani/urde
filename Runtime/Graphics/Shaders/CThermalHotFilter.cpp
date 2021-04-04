@@ -9,7 +9,7 @@
 
 namespace urde {
 
-static boo::ObjToken<boo::IShaderPipeline> s_Pipeline;
+boo::ObjToken<boo::IShaderPipeline> CThermalHotFilter::s_Pipeline;
 
 void CThermalHotFilter::Initialize() { s_Pipeline = hecl::conv->convert(Shader_CThermalHotFilter{}); }
 

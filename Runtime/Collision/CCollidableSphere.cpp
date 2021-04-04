@@ -6,7 +6,7 @@
 #include "Runtime/Collision/CollisionUtil.hpp"
 
 namespace urde {
-constexpr CCollisionPrimitive::Type sType(CCollidableSphere::SetStaticTableIndex, "CCollidableSphere");
+constexpr CCollisionPrimitive::Type sTypeCCollidableSphere(CCollidableSphere::SetStaticTableIndex, "CCollidableSphere");
 
 namespace Collide {
 
@@ -224,7 +224,7 @@ CRayCastResult CCollidableSphere::CastRayInternal(const CInternalRayCastStructur
   return {};
 }
 
-const CCollisionPrimitive::Type& CCollidableSphere::GetType() { return sType; }
+const CCollisionPrimitive::Type& CCollidableSphere::GetType() { return sTypeCCollidableSphere; }
 
 bool CCollidableSphere::CollideMovingAABox(const CInternalCollisionStructure& collision, const zeus::CVector3f& dir,
                                            double& dOut, CCollisionInfo& infoOut) {

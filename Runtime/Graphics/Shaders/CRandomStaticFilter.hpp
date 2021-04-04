@@ -12,6 +12,10 @@ enum class EFilterShape;
 enum class EFilterType;
 
 class CRandomStaticFilter {
+  static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_CookieCutterPipeline;
   struct Uniform {
     zeus::CColor color;
     float randOff;
@@ -22,6 +26,8 @@ class CRandomStaticFilter {
   boo::ObjToken<boo::IShaderDataBinding> m_dataBind;
   Uniform m_uniform;
   bool m_cookieCutter;
+
+  static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type);
 
 public:
   static void Initialize();

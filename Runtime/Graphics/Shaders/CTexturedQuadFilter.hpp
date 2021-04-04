@@ -21,6 +21,32 @@ public:
   enum class ZTest { None, LEqual, GEqual, GEqualZWrite };
 
 protected:
+  static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AlphaGEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AlphaGEqualZWritePipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AlphaLEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AddGEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AddGEqualZWritePipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AddLEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_SubtractPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_SubtractGEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_SubtractGEqualZWritePipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_SubtractLEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_MultGEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_MultGEqualZWritePipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_MultLEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_InvDstMultPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_InvDstMultGEqualPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_InvDstMultLEqualPipeline;
+
+  static boo::ObjToken<boo::IShaderPipeline> s_AAlphaPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AAddPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_ASubtractPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AMultPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AInvDstMultPipeline;
+
   struct Uniform {
     zeus::CMatrix4f m_matrix;
     zeus::CColor m_color;
@@ -35,6 +61,8 @@ protected:
   ZTest m_zTest;
   bool m_flipRect = false;
 
+  static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type, CTexturedQuadFilter::ZTest zTest);
+  static boo::ObjToken<boo::IShaderPipeline> SelectAlphaPipeline(EFilterType type);
   explicit CTexturedQuadFilter(const boo::ObjToken<boo::ITexture>& tex);
 
 public:

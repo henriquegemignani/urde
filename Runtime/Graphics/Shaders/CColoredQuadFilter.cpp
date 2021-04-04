@@ -9,9 +9,9 @@
 
 namespace urde {
 
-static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
+boo::ObjToken<boo::IShaderPipeline> CColoredQuadFilter::s_AlphaPipeline;
+boo::ObjToken<boo::IShaderPipeline> CColoredQuadFilter::s_AddPipeline;
+boo::ObjToken<boo::IShaderPipeline> CColoredQuadFilter::s_MultPipeline;
 
 void CColoredQuadFilter::Initialize() {
   s_AlphaPipeline = hecl::conv->convert(Shader_CColoredQuadFilter{});
@@ -25,7 +25,7 @@ void CColoredQuadFilter::Shutdown() {
   s_MultPipeline.reset();
 }
 
-static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type) {
+boo::ObjToken<boo::IShaderPipeline> CColoredQuadFilter::SelectPipeline(EFilterType type) {
   switch (type) {
   case EFilterType::Blend:
     return s_AlphaPipeline;

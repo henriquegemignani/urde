@@ -10,8 +10,8 @@
 
 namespace urde {
 
-static boo::ObjToken<boo::IShaderPipeline> s_Pipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_ZPipeline;
+boo::ObjToken<boo::IShaderPipeline> CWorldShadowShader::s_Pipeline;
+boo::ObjToken<boo::IShaderPipeline> CWorldShadowShader::s_ZPipeline;
 
 void CWorldShadowShader::Initialize() {
   s_Pipeline = hecl::conv->convert(Shader_CWorldShadowShader{});

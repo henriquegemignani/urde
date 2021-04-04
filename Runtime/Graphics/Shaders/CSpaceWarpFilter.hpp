@@ -12,6 +12,7 @@
 namespace urde {
 
 class CSpaceWarpFilter {
+  static boo::ObjToken<boo::IShaderPipeline> s_Pipeline;
   struct Uniform {
     zeus::CMatrix4f m_matrix;
     zeus::CMatrix4f m_indXf;

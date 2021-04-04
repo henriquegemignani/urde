@@ -1,6 +1,5 @@
 #include <set>
 
-#define NOD_ATHENA 1
 #include "DNAMP3.hpp"
 #include "STRG.hpp"
 #include "MLVL.hpp"

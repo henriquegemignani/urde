@@ -8,6 +8,8 @@
 
 #include "DataSpec/DNACommon/GX.hpp"
 
+#include <optick.h>
+
 #include <boo/graphicsdev/IGraphicsCommandQueue.hpp>
 #include <boo/graphicsdev/IGraphicsDataFactory.hpp>
 

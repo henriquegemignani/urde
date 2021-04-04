@@ -13,6 +13,8 @@
 namespace urde {
 
 class CWorldShadowShader {
+  static boo::ObjToken<boo::IShaderPipeline> s_Pipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_ZPipeline;
   boo::ObjToken<boo::ITextureR> m_tex;
   std::optional<CTexturedQuadFilter> m_prevQuad;
   u32 m_w, m_h;

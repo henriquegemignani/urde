@@ -9,6 +9,7 @@
 namespace urde {
 
 class CThermalHotFilter {
+  static boo::ObjToken<boo::IShaderPipeline> s_Pipeline;
   struct Uniform {
     std::array<zeus::CColor, 3> m_colorRegs;
   };

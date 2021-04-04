@@ -8,7 +8,8 @@
 #include "Runtime/Collision/CollisionUtil.hpp"
 
 namespace urde {
-constexpr CCollisionPrimitive::Type sType(CCollidableOBBTreeGroup::SetStaticTableIndex, "CCollidableOBBTreeGroup");
+constexpr CCollisionPrimitive::Type sTypeCCollidableOBBTreeGroup(CCollidableOBBTreeGroup::SetStaticTableIndex,
+                                                                 "CCollidableOBBTreeGroup");
 
 CCollidableOBBTreeGroupContainer::CCollidableOBBTreeGroupContainer(CInputStream& in) {
   const u32 treeCount = in.readUint32Big();
@@ -79,7 +80,7 @@ CRayCastResult CCollidableOBBTreeGroup::CastRayInternal(const CInternalRayCastSt
   return ret;
 }
 
-const CCollisionPrimitive::Type& CCollidableOBBTreeGroup::GetType() { return sType; }
+const CCollisionPrimitive::Type& CCollidableOBBTreeGroup::GetType() { return sTypeCCollidableOBBTreeGroup; }
 
 void CCollidableOBBTreeGroup::SetStaticTableIndex(u32 index) { sTableIndex = index; }
 

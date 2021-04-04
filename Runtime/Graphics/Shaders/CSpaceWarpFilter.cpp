@@ -9,7 +9,7 @@
 
 namespace urde {
 
-static boo::ObjToken<boo::IShaderPipeline> s_Pipeline;
+boo::ObjToken<boo::IShaderPipeline> CSpaceWarpFilter::s_Pipeline;
 
 void CSpaceWarpFilter::Initialize() { s_Pipeline = hecl::conv->convert(Shader_CSpaceWarpFilter{}); }
 

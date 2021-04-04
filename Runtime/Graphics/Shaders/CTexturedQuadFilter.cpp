@@ -9,31 +9,31 @@
 
 namespace urde {
 
-static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AlphaGEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AlphaGEqualZWritePipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AlphaLEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AddGEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AddGEqualZWritePipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AddLEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_SubtractPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_SubtractGEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_SubtractGEqualZWritePipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_SubtractLEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_MultGEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_MultGEqualZWritePipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_MultLEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_InvDstMultPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_InvDstMultGEqualPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_InvDstMultLEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AlphaPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AlphaGEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AlphaGEqualZWritePipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AlphaLEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AddPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AddGEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AddGEqualZWritePipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AddLEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_SubtractPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_SubtractGEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_SubtractGEqualZWritePipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_SubtractLEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_MultPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_MultGEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_MultGEqualZWritePipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_MultLEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_InvDstMultPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_InvDstMultGEqualPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_InvDstMultLEqualPipeline;
 
-static boo::ObjToken<boo::IShaderPipeline> s_AAlphaPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AAddPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_ASubtractPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AMultPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AInvDstMultPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AAlphaPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AAddPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_ASubtractPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AMultPipeline;
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::s_AInvDstMultPipeline;
 
 void CTexturedQuadFilter::Initialize() {
   s_AlphaPipeline = hecl::conv->convert(Shader_CTexturedQuadFilterAlpha{});
@@ -95,7 +95,8 @@ void CTexturedQuadFilterAlpha::Shutdown() {
   s_AInvDstMultPipeline.reset();
 }
 
-static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type, CTexturedQuadFilter::ZTest zTest) {
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::SelectPipeline(EFilterType type,
+                                                                        CTexturedQuadFilter::ZTest zTest) {
   switch (zTest) {
   case CTexturedQuadFilter::ZTest::GEqual:
     switch (type) {
@@ -161,7 +162,7 @@ static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type, CTex
   }
 }
 
-static boo::ObjToken<boo::IShaderPipeline> SelectAlphaPipeline(EFilterType type) {
+boo::ObjToken<boo::IShaderPipeline> CTexturedQuadFilter::SelectAlphaPipeline(EFilterType type) {
   switch (type) {
   case EFilterType::Blend:
     return s_AAlphaPipeline;

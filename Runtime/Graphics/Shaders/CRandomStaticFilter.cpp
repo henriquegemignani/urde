@@ -10,10 +10,10 @@
 
 namespace urde {
 
-static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_CookieCutterPipeline;
+boo::ObjToken<boo::IShaderPipeline> CRandomStaticFilter::s_AlphaPipeline;
+boo::ObjToken<boo::IShaderPipeline> CRandomStaticFilter::s_AddPipeline;
+boo::ObjToken<boo::IShaderPipeline> CRandomStaticFilter::s_MultPipeline;
+boo::ObjToken<boo::IShaderPipeline> CRandomStaticFilter::s_CookieCutterPipeline;
 
 void CRandomStaticFilter::Initialize() {
   s_AlphaPipeline = hecl::conv->convert(Shader_CRandomStaticFilterAlpha{});
@@ -29,7 +29,7 @@ void CRandomStaticFilter::Shutdown() {
   s_CookieCutterPipeline.reset();
 }
 
-static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type) {
+boo::ObjToken<boo::IShaderPipeline> CRandomStaticFilter::SelectPipeline(EFilterType type) {
   switch (type) {
   case EFilterType::Blend:
     return s_AlphaPipeline;

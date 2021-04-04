@@ -15,6 +15,9 @@ enum class EFilterShape;
 enum class EFilterType;
 
 class CColoredQuadFilter {
+  static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
+  static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
   struct Uniform {
     zeus::CMatrix4f m_matrix;
     zeus::CColor m_color;
@@ -23,6 +26,8 @@ class CColoredQuadFilter {
   boo::ObjToken<boo::IGraphicsBufferD> m_uniBuf;
   boo::ObjToken<boo::IShaderDataBinding> m_dataBind;
   Uniform m_uniform;
+
+  static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type);
 
 public:
   static void Initialize();

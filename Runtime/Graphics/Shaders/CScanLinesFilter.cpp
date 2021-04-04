@@ -11,9 +11,9 @@
 
 namespace urde {
 
-static boo::ObjToken<boo::IShaderPipeline> s_AlphaPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_AddPipeline;
-static boo::ObjToken<boo::IShaderPipeline> s_MultPipeline;
+boo::ObjToken<boo::IShaderPipeline> CScanLinesFilter::s_AlphaPipeline;
+boo::ObjToken<boo::IShaderPipeline> CScanLinesFilter::s_AddPipeline;
+boo::ObjToken<boo::IShaderPipeline> CScanLinesFilter::s_MultPipeline;
 
 void CScanLinesFilter::Initialize() {
   s_AlphaPipeline = hecl::conv->convert(Shader_CScanLinesFilterAlpha{});
@@ -27,7 +27,7 @@ void CScanLinesFilter::Shutdown() {
   s_MultPipeline.reset();
 }
 
-static boo::ObjToken<boo::IShaderPipeline> SelectPipeline(EFilterType type) {
+boo::ObjToken<boo::IShaderPipeline> CScanLinesFilter::SelectPipeline(EFilterType type) {
   switch (type) {
   case EFilterType::Blend:
     return s_AlphaPipeline;

@@ -125,6 +125,7 @@ add_library(${name} ${ARGN})
 if(COMMAND add_sanitizers)
   add_sanitizers(${name})
 endif()
+set_property(TARGET ${name} PROPERTY UNITY_BUILD ${URDE_UNITY_BUILD})
 
 if(WINDOWS_STORE)
   set_property(TARGET ${name} PROPERTY VS_WINRT_COMPONENT TRUE)
